@@ -1,307 +1,257 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2709
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
-{\colortbl;\red255\green255\blue255;\red46\green49\blue51;\red77\green80\blue85;\red246\green247\blue249;
-\red20\green67\blue174;\red186\green6\blue115;\red162\green0\blue16;\red21\green98\blue39;\red24\green25\blue27;
-}
-{\*\expandedcolortbl;;\cssrgb\c23529\c25098\c26275;\cssrgb\c37255\c38824\c40784;\cssrgb\c97255\c97647\c98039;
-\cssrgb\c9412\c35294\c73725;\cssrgb\c78824\c15294\c52549;\cssrgb\c70196\c7843\c7059;\cssrgb\c7451\c45098\c20000;\cssrgb\c12549\c12941\c14118;
-}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
 
-\f0\fs26 \cf2 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 \
-\
-\pard\pardeftab720\partightenfactor0
-\cf3 \cb4 \strokec3 // Global variables/configurations\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 DCMProfileID\cf2 \strokec2  = \cf7 \strokec7 'DCMProfileID'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 AUTO_POP_HEADER_COLOR\cf2 \strokec2  = \cf7 \strokec7 '#a4c2f4'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2  = \cf7 \strokec7 '#f4d8ba'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 AUTO_POP_CELL_COLOR\cf2 \strokec2  = \cf7 \strokec7 'lightgray'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 Atomic_Colour\cf2 \strokec2  = \cf7 \strokec7 '#faa61a'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 Atomic_Colour2\cf2 \strokec2  = \cf7 \strokec7 '#e45f3d'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 PASTEL_GREEN\cf2 \strokec2  = \cf7 \strokec7 '#b6d7a8'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 LIGHT_PINK\cf2 \strokec2  = \cf7 \strokec7 '#ffc0cb'\cf2 \strokec2 ;\cb1 \
-\
-\pard\pardeftab720\partightenfactor0
-\cf3 \cb4 \strokec3 // Data range values\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 DCMUserProfileID\cf2 \strokec2  = \cf7 \strokec7 'DCMUserProfileID'\cf2 \strokec2 ;\cb1 \
-\
-\pard\pardeftab720\partightenfactor0
-\cf3 \cb4 \strokec3 // sheet names\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 SETUP_SHEET\cf2 \strokec2  = \cf7 \strokec7 'Setup'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 SITES_SHEET\cf2 \strokec2  = \cf7 \strokec7 'Sites'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 CAMPAIGNS_SHEET\cf2 \strokec2  = \cf7 \strokec7 'Campaigns'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 PLACEMENTS_SHEET\cf2 \strokec2  = \cf7 \strokec7 'Placements'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 ADS_SHEET\cf2 \strokec2  = \cf7 \strokec7 'Ads'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 CREATIVES_SHEET\cf2 \strokec2  = \cf7 \strokec7 'Creatives'\cf2 \strokec2 ;\cb1 \
-\cf5 \cb4 \strokec5 var\cf2 \strokec2  \cf6 \strokec6 LANDING_PAGES_SHEET\cf2 \strokec2  = \cf7 \strokec7 'LandingPages'\cf2 \strokec2 ;\cb1 \
-\
-\
-\pard\pardeftab720\partightenfactor0
-\cf8 \cb4 \strokec8 /**\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * Helper function to get DCM Profile ID.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @return \{object\} DCM Profile ID.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  */\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 function\cf2 \strokec2  \cf9 \strokec9 _fetchProfileId\cf2 \strokec2 () \{\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf2 \cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 ss\cf2 \strokec2  = \cf6 \strokec6 SpreadsheetApp\cf2 \strokec2 .\cf9 \strokec9 getActiveSpreadsheet\cf2 \strokec2 ();\cb1 \
-\cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 range\cf2 \strokec2  = \cf9 \strokec9 ss\cf2 \strokec2 .\cf9 \strokec9 getRangeByName\cf2 \strokec2 (\cf6 \strokec6 DCMUserProfileID\cf2 \strokec2 );\cb1 \
-\cb4   \cf5 \strokec5 return\cf2 \strokec2  \cf9 \strokec9 range\cf2 \strokec2 .\cf9 \strokec9 getValue\cf2 \strokec2 ();\cb1 \
-\cb4 \}\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf8 \cb4 \strokec8 /*******************************************************************************************************************\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * Find and clear, or create a new sheet named after the input argument.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @param \{string\} sheetName The name of the sheet which should be initialized.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @param \{boolean\} lock To lock the sheet after initialization or not\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @return \{object\} A handle to a sheet.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  */\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 function\cf2 \strokec2  \cf9 \strokec9 initializeSheet_\cf2 \strokec2 (\cf9 \strokec9 sheetName\cf2 \strokec2 , \cf9 \strokec9 lock\cf2 \strokec2 ) \{\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf2 \cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 ss\cf2 \strokec2  = \cf6 \strokec6 SpreadsheetApp\cf2 \strokec2 .\cf9 \strokec9 getActiveSpreadsheet\cf2 \strokec2 ();\cb1 \
-\cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2  = \cf9 \strokec9 ss\cf2 \strokec2 .\cf9 \strokec9 getSheetByName\cf2 \strokec2 (\cf9 \strokec9 sheetName\cf2 \strokec2 );\cb1 \
-\cb4   \cf5 \strokec5 if\cf2 \strokec2  (\cf9 \strokec9 sheet\cf2 \strokec2  == \cf5 \strokec5 null\cf2 \strokec2 ) \{\cb1 \
-\cb4     \cf9 \strokec9 sheet\cf2 \strokec2  = \cf9 \strokec9 ss\cf2 \strokec2 .\cf9 \strokec9 insertSheet\cf2 \strokec2 (\cf9 \strokec9 sheetName\cf2 \strokec2 );\cb1 \
-\cb4   \} \cf5 \strokec5 else\cf2 \strokec2  \{\cb1 \
-\cb4     \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 clear\cf2 \strokec2 ();\cb1 \
-\cb4   \}\cb1 \
-\cb4   \cf5 \strokec5 if\cf2 \strokec2  (\cf9 \strokec9 lock\cf2 \strokec2 ) \{\cb1 \
-\cb4     \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 protect\cf2 \strokec2 ().\cf9 \strokec9 setWarningOnly\cf2 \strokec2 (\cf5 \strokec5 true\cf2 \strokec2 );\cb1 \
-\cb4   \}\cb1 \
-\cb4   \cf5 \strokec5 return\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2 ;\cb1 \
-\cb4 \}\cb1 \
-\
-\
-\pard\pardeftab720\partightenfactor0
-\cf8 \cb4 \strokec8 /**\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * Initialize all tabs and their header rows\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  */\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 function\cf2 \strokec2  \cf9 \strokec9 setupTabs\cf2 \strokec2 () \{\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf2 \cb4   \cf9 \strokec9 _setupSetupSheet\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 _setupSitesSheet\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 _setupCampaignsSheet\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 _setupPlacementsGroupsSheet\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 _setupAdsSheet\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 _setupCreativesSheet\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 _setupLandingPagesSheet\cf2 \strokec2 ();\cb1 \
-\cb4 \}\cb1 \
-\
-\
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 function\cf2 \strokec2  \cf9 \strokec9 _setupCampaignsSheet\cf2 \strokec2 () \{\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf2 \cb4 \}\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf8 \cb4 \strokec8 /**\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * Initialize the Setup sheet and its header row\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @return \{object\} A handle to the sheet.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8 */\cf2 \cb1 \strokec2 \
-\
-\cf8 \cb4 \strokec8 /**\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * Initialize the Sites sheet and its header row\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @return \{object\} A handle to the sheet.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  */\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 function\cf2 \strokec2  \cf9 \strokec9 _setupSitesSheet\cf2 \strokec2 () \{\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf2 \cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2  = \cf9 \strokec9 initializeSheet_\cf2 \strokec2 (\cf6 \strokec6 SITES_SHEET\cf2 \strokec2 , \cf5 \strokec5 true\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Site Name'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 AUTO_POP_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'B1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Directory Site ID'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 AUTO_POP_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1:B1'\cf2 \strokec2 ).\cf9 \strokec9 setFontWeight\cf2 \strokec2 (\cf7 \strokec7 'bold'\cf2 \strokec2 ).\cf9 \strokec9 setWrap\cf2 \strokec2 (\cf5 \strokec5 true\cf2 \strokec2 );\cb1 \
-\cb4   \cf5 \strokec5 return\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2 ;\cb1 \
-\cb4 \}\cb1 \
-\
-\pard\pardeftab720\partightenfactor0
-\cf8 \cb4 \strokec8 /*******************************************************************************************************************\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * Initialize the Campaigns sheet and its header row\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @return \{object\} A handle to the sheet.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  */\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 function\cf2 \strokec2  \cf9 \strokec9 _setupCampaignsSheet\cf2 \strokec2 () \{\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf2 \cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2  = \cf9 \strokec9 initializeSheet_\cf2 \strokec2 (\cf6 \strokec6 CAMPAIGNS_SHEET\cf2 \strokec2 , \cf5 \strokec5 false\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'DCM Advertiser ID*'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 PASTEL_GREEN\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'B1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Campaign Name*'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 PASTEL_GREEN\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'C1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Landing Page ID*'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 PASTEL_GREEN\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'D1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Start Date*'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 PASTEL_GREEN\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'E1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'End Date*'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 PASTEL_GREEN\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'F1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Campaign ID (AUTO-POPULATED)'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 AUTO_POP_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1:F1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setFontWeight\cf2 \strokec2 (\cf7 \strokec7 'bold'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setWrap\cf2 \strokec2 (\cf5 \strokec5 true\cf2 \strokec2 );\cb1 \
-\cb4   \cf5 \strokec5 return\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2 ;\cb1 \
-\
-\cb4 \}\cb1 \
-\
-\pard\pardeftab720\partightenfactor0
-\cf8 \cb4 \strokec8 /*******************************************************************************************************************\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * Initialize the Placements sheet and its header row\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @return \{object\} A handle to the sheet.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  */\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 function\cf2 \strokec2  \cf9 \strokec9 _setupPlacementsGroupsSheet\cf2 \strokec2 () \{\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf2 \cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2  = \cf9 \strokec9 initializeSheet_\cf2 \strokec2 (\cf6 \strokec6 PLACEMENTS_SHEET\cf2 \strokec2 , \cf5 \strokec5 false\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Campaign ID*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'B1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Placement Name*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'C1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Site ID*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'D1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Compatibility*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'E1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Size*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'F1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Pricing Schedule Start Date*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'G1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Pricing Schedule End Date*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'H1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Pricing Schedule Pricing Type*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'I1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Tag Formats*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'J1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Placement ID (do not edit; auto-filling)'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 AUTO_POP_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1:J1'\cf2 \strokec2 ).\cf9 \strokec9 setFontWeight\cf2 \strokec2 (\cf7 \strokec7 'bold'\cf2 \strokec2 ).\cf9 \strokec9 setWrap\cf2 \strokec2 (\cf5 \strokec5 true\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf3 \strokec3 // Set data validation for cell D2:D20\cf2 \cb1 \strokec2 \
-\cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 dataValidationRuleD\cf2 \strokec2  = \cf6 \strokec6 SpreadsheetApp\cf2 \strokec2 .\cf9 \strokec9 newDataValidation\cf2 \strokec2 ().\cf9 \strokec9 requireValueInList\cf2 \strokec2 ([\cf7 \strokec7 'DISPLAY'\cf2 \strokec2 , \cf7 \strokec7 'DISPLAY_INTERSTITIAL'\cf2 \strokec2 , \cf7 \strokec7 'IN_STREAM_AUDIO'\cf2 \strokec2 , \cf7 \strokec7 'IN_STREAM_VIDEO'\cf2 \strokec2 ]).\cf9 \strokec9 build\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'D2:D20'\cf2 \strokec2 ).\cf9 \strokec9 setDataValidation\cf2 \strokec2 (\cf9 \strokec9 dataValidationRuleD\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf3 \strokec3 // Set data validation for cell H2:H20\cf2 \cb1 \strokec2 \
-\cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 dataValidationRuleH\cf2 \strokec2  = \cf6 \strokec6 SpreadsheetApp\cf2 \strokec2 .\cf9 \strokec9 newDataValidation\cf2 \strokec2 ().\cf9 \strokec9 requireValueInList\cf2 \strokec2 ([\cf7 \strokec7 'PRICING_TYPE_CPA'\cf2 \strokec2 , \cf7 \strokec7 'PRICING_TYPE_CPC'\cf2 \strokec2 , \cf7 \strokec7 'PRICING_TYPE_CPM'\cf2 \strokec2 , \cf7 \strokec7 'PRICING_TYPE_CPM_ACTIVEVIEW'\cf2 \strokec2 , \cf7 \strokec7 'PRICING_TYPE_FLAT_RATE_CLICKS'\cf2 \strokec2 , \cf7 \strokec7 'PRICING_TYPE_FLAT_RATE_IMPRESSIONS'\cf2 \strokec2 ]).\cf9 \strokec9 build\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'H2:H20'\cf2 \strokec2 ).\cf9 \strokec9 setDataValidation\cf2 \strokec2 (\cf9 \strokec9 dataValidationRuleH\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf3 \strokec3 // Set data validation for cell I2:I20\cf2 \cb1 \strokec2 \
-\cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 dataValidationRuleI\cf2 \strokec2  = \cf6 \strokec6 SpreadsheetApp\cf2 \strokec2 .\cf9 \strokec9 newDataValidation\cf2 \strokec2 ().\cf9 \strokec9 requireValueInList\cf2 \strokec2 ([\cf7 \strokec7 'PLACEMENT_TAG_Iframe/JavaScript'\cf2 \strokec2 ,\cf7 \strokec7 'PLACEMENT_TAG_IFRAME_JAVASCRIPT'\cf2 \strokec2 ,\cf7 \strokec7 'PLACEMENT_TAG_INTERNAL_REDIRECT'\cf2 \strokec2 , \cf7 \strokec7 'PLACEMENT_TAG_JAVASCRIPT'\cf2 \strokec2 ,\cf7 \strokec7 'PLACEMENT_TAG_CLICK_TRACKER'\cf2 \strokec2 ,\cf7 \strokec7 'PLACEMENT_TAG_TRACKING'\cf2 \strokec2 ,\cf7 \strokec7 'PLACEMENT_TAG_TRACKING_IFRAME'\cf2 \strokec2 ,\cf7 \strokec7 'PLACEMENT_TAG_TRACKING_JAVASCRIPT'\cf2 \strokec2 ]).\cf9 \strokec9 build\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'I2:I20'\cf2 \strokec2 ).\cf9 \strokec9 setDataValidation\cf2 \strokec2 (\cf9 \strokec9 dataValidationRuleI\cf2 \strokec2 );\cb1 \
-\
-\
-\cb4   \cf3 \strokec3 // Set data validation for cell E2:E20\cf2 \cb1 \strokec2 \
-\cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 dataValidationRuleE\cf2 \strokec2  = \cf6 \strokec6 SpreadsheetApp\cf2 \strokec2 .\cf9 \strokec9 newDataValidation\cf2 \strokec2 ().\cf9 \strokec9 requireValueInList\cf2 \strokec2 ([\cf7 \strokec7 '728x90'\cf2 \strokec2 , \cf7 \strokec7 '300x250'\cf2 \strokec2 , \cf7 \strokec7 '160x600'\cf2 \strokec2 ,\cf7 \strokec7 '500x500'\cf2 \strokec2 , \cf7 \strokec7 '120x600'\cf2 \strokec2 , \cf7 \strokec7 '336x280'\cf2 \strokec2 , \cf7 \strokec7 '970x250'\cf2 \strokec2 , \cf7 \strokec7 '300x600'\cf2 \strokec2 , \cf7 \strokec7 '300x1050'\cf2 \strokec2 , \cf7 \strokec7 '320x50'\cf2 \strokec2 , \cf7 \strokec7 '320x100'\cf2 \strokec2 , \cf7 \strokec7 '250x250'\cf2 \strokec2 , \cf7 \strokec7 '200x200'\cf2 \strokec2 , \cf7 \strokec7 '180x150'\cf2 \strokec2 , \cf7 \strokec7 '240x400'\cf2 \strokec2 , \cf7 \strokec7 '300x100'\cf2 \strokec2 , \cf7 \strokec7 '720x300'\cf2 \strokec2 ,\cf7 \strokec7 '970x90'\cf2 \strokec2 , \cf7 \strokec7 '580x400'\cf2 \strokec2 , \cf7 \strokec7 '640x360'\cf2 \strokec2 , \cf7 \strokec7 '640x480'\cf2 \strokec2 , \cf7 \strokec7 '468x60'\cf2 \strokec2 , \cf7 \strokec7 '234x60'\cf2 \strokec2 , \cf7 \strokec7 '88x31'\cf2 \strokec2 , \cf7 \strokec7 '120x90'\cf2 \strokec2 , \cf7 \strokec7 '120x60'\cf2 \strokec2 , \cf7 \strokec7 '125x125'\cf2 \strokec2 , \cf7 \strokec7 '120x240'\cf2 \strokec2 , \cf7 \strokec7 '300x50'\cf2 \strokec2 , \cf7 \strokec7 '320x480'\cf2 \strokec2 , \cf7 \strokec7 '480x320'\cf2 \strokec2 , \cf7 \strokec7 '768x1024'\cf2 \strokec2 , \cf7 \strokec7 '1024x768'\cf2 \strokec2 , \cf7 \strokec7 '234x15'\cf2 \strokec2 , \cf7 \strokec7 '320x240'\cf2 \strokec2 , \cf7 \strokec7 '240x320'\cf2 \strokec2 , \cf7 \strokec7 '768x90'\cf2 \strokec2 , \cf7 \strokec7 '980x120'\cf2 \strokec2 , \cf7 \strokec7 '250x360'\cf2 \strokec2 , \cf7 \strokec7 '980x250'\cf2 \strokec2 , \cf7 \strokec7 '930x180'\cf2 \strokec2 , \cf7 \strokec7 '970x66'\cf2 \strokec2 , \cf7 \strokec7 '970x280'\cf2 \strokec2 , \cf7 \strokec7 '980x90'\cf2 \strokec2 , \cf7 \strokec7 '980x240'\cf2 \strokec2 , \cf7 \strokec7 '480x300'\cf2 \strokec2 , \cf7 \strokec7 '480x60'\cf2 \strokec2 , \cf7 \strokec7 '300x200'\cf2 \strokec2 , \cf7 \strokec7 '300x300'\cf2 \strokec2 , \cf7 \strokec7 '320x150'\cf2 \strokec2 , \cf7 \strokec7 '400x200'\cf2 \strokec2 , \cf7 \strokec7 '600x300'\cf2 \strokec2 , \cf7 \strokec7 '600x120'\cf2 \strokec2 , \cf7 \strokec7 '600x160'\cf2 \strokec2 , \cf7 \strokec7 '600x200'\cf2 \strokec2 , \cf7 \strokec7 '600x500'\cf2 \strokec2 , \cf7 \strokec7 '800x100'\cf2 \strokec2 , \cf7 \strokec7 '800x400'\cf2 \strokec2 , \cf7 \strokec7 '800x600'\cf2 \strokec2 , \cf7 \strokec7 '900x500'\cf2 \strokec2 , \cf7 \strokec7 '900x600'\cf2 \strokec2 , \cf7 \strokec7 '900x700'\cf2 \strokec2 , \cf7 \strokec7 '1000x200'\cf2 \strokec2 , \cf7 \strokec7 '1000x300'\cf2 \strokec2 , \cf7 \strokec7 '800x800'\cf2 \strokec2 , \cf7 \strokec7 '400x800'\cf2 \strokec2 , \cf7 \strokec7 '1000x627'\cf2 \strokec2 , \cf7 \strokec7 '1000x750'\cf2 \strokec2 , \cf7 \strokec7 '1000x800'\cf2 \strokec2 , \cf7 \strokec7 '1000x90'\cf2 \strokec2 , \cf7 \strokec7 '1000x250'\cf2 \strokec2 , \cf7 \strokec7 '1000x260'\cf2 \strokec2 , \cf7 \strokec7 '1200x170'\cf2 \strokec2 , \cf7 \strokec7 '1200x630'\cf2 \strokec2 , \cf7 \strokec7 '1200x675'\cf2 \strokec2 , \cf7 \strokec7 '1200x800'\cf2 \strokec2 , \cf7 \strokec7 '1200x900'\cf2 \strokec2 , \cf7 \strokec7 '1200x1200'\cf2 \strokec2 ,\cf7 \strokec7 '1200x627'\cf2 \strokec2 ,\cf7 \strokec7 '1X1'\cf2 \strokec2 ,\cf7 \strokec7 '1224X1584'\cf2 \strokec2 ]).\cf9 \strokec9 build\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'E2:E20'\cf2 \strokec2 ).\cf9 \strokec9 setDataValidation\cf2 \strokec2 (\cf9 \strokec9 dataValidationRuleE\cf2 \strokec2 );\cb1 \
-\cb4   \cf5 \strokec5 return\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2 ;\cb1 \
-\
-\cb4 \}\cb1 \
-\
-\
-\
-\pard\pardeftab720\partightenfactor0
-\cf8 \cb4 \strokec8 /*******************************************************************************************************************\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * Initialize the Advertisers sheet and its header row\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @return \{object\} A handle to the sheet.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  */\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 function\cf2 \strokec2  \cf9 \strokec9 _setupAdsSheet\cf2 \strokec2 () \{\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf2 \cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2  = \cf9 \strokec9 initializeSheet_\cf2 \strokec2 (\cf6 \strokec6 ADS_SHEET\cf2 \strokec2 , \cf5 \strokec5 false\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Campaign ID*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'B1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Ad Name*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'C1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Start Date and Time*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'D1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'End Date and Time*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'E1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Impression Ratio*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'F1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Priority*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'G1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Type*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'H1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Placement ID*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'I1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Ad ID (AUTO-POPULATED)'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 AUTO_POP_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1:I1'\cf2 \strokec2 ).\cf9 \strokec9 setFontWeight\cf2 \strokec2 (\cf7 \strokec7 'bold'\cf2 \strokec2 ).\cf9 \strokec9 setWrap\cf2 \strokec2 (\cf5 \strokec5 true\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf3 \strokec3 // Set data validation for cell F2:F20\cf2 \cb1 \strokec2 \
-\cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 dataValidationRuleF\cf2 \strokec2  = \cf6 \strokec6 SpreadsheetApp\cf2 \strokec2 .\cf9 \strokec9 newDataValidation\cf2 \strokec2 ().\cf9 \strokec9 requireValueInList\cf2 \strokec2 ([\cf7 \strokec7 '1'\cf2 \strokec2 , \cf7 \strokec7 '2'\cf2 \strokec2 , \cf7 \strokec7 '3'\cf2 \strokec2 , \cf7 \strokec7 '4'\cf2 \strokec2 , \cf7 \strokec7 '5'\cf2 \strokec2 , \cf7 \strokec7 '6'\cf2 \strokec2 , \cf7 \strokec7 '7'\cf2 \strokec2 , \cf7 \strokec7 '8'\cf2 \strokec2 , \cf7 \strokec7 '9'\cf2 \strokec2 , \cf7 \strokec7 '10'\cf2 \strokec2 , \cf7 \strokec7 '11'\cf2 \strokec2 , \cf7 \strokec7 '12'\cf2 \strokec2 , \cf7 \strokec7 '13'\cf2 \strokec2 , \cf7 \strokec7 '14'\cf2 \strokec2 , \cf7 \strokec7 '15'\cf2 \strokec2 , \cf7 \strokec7 '16'\cf2 \strokec2 ]).\cf9 \strokec9 build\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'F2:F20'\cf2 \strokec2 ).\cf9 \strokec9 setDataValidation\cf2 \strokec2 (\cf9 \strokec9 dataValidationRuleF\cf2 \strokec2 );\cb1 \
-\cb4   \cf3 \strokec3 // Set data validation for cell E2:E20\cf2 \cb1 \strokec2 \
-\cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 dataValidationRuleE\cf2 \strokec2  = \cf6 \strokec6 SpreadsheetApp\cf2 \strokec2 .\cf9 \strokec9 newDataValidation\cf2 \strokec2 ().\cf9 \strokec9 requireValueInList\cf2 \strokec2 ([\cf7 \strokec7 '1'\cf2 \strokec2 , \cf7 \strokec7 '2'\cf2 \strokec2 , \cf7 \strokec7 '3'\cf2 \strokec2 , \cf7 \strokec7 '4'\cf2 \strokec2 , \cf7 \strokec7 '5'\cf2 \strokec2 , \cf7 \strokec7 '6'\cf2 \strokec2 , \cf7 \strokec7 '7'\cf2 \strokec2 , \cf7 \strokec7 '8'\cf2 \strokec2 , \cf7 \strokec7 '9'\cf2 \strokec2 , \cf7 \strokec7 '10'\cf2 \strokec2 ]).\cf9 \strokec9 build\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'E2:E20'\cf2 \strokec2 ).\cf9 \strokec9 setDataValidation\cf2 \strokec2 (\cf9 \strokec9 dataValidationRuleE\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf5 \strokec5 return\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2 ;\cb1 \
-\cb4 \}\cb1 \
-\
-\
-\
-\pard\pardeftab720\partightenfactor0
-\cf8 \cb4 \strokec8 /*******************************************************************************************************************\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * Initialize the Creatives sheet and its header row\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @return \{object\} A handle to the sheet.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  */\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 function\cf2 \strokec2  \cf9 \strokec9 _setupCreativesSheet\cf2 \strokec2 () \{\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf2 \cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2  = \cf9 \strokec9 initializeSheet_\cf2 \strokec2 (\cf6 \strokec6 CREATIVES_SHEET\cf2 \strokec2 , \cf5 \strokec5 false\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Advertiser ID*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'B1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Creative Name*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'C1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Width*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'D1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Height*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'E1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Creative Type*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'F1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Creative Asset Type*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'G1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Creative Asset Name*'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'H1'\cf2 \strokec2 ).\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 'Creative ID (AUTO-POPULATED)'\cf2 \strokec2 ).\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 AUTO_POP_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1:H1'\cf2 \strokec2 ).\cf9 \strokec9 setFontWeight\cf2 \strokec2 (\cf7 \strokec7 'bold'\cf2 \strokec2 ).\cf9 \strokec9 setWrap\cf2 \strokec2 (\cf5 \strokec5 true\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf3 \strokec3 // Set data validation for cell E2:E20\cf2 \cb1 \strokec2 \
-\cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 dataValidationRuleE\cf2 \strokec2  = \cf6 \strokec6 SpreadsheetApp\cf2 \strokec2 .\cf9 \strokec9 newDataValidation\cf2 \strokec2 ().\cf9 \strokec9 requireValueInList\cf2 \strokec2 ([\cf7 \strokec7 'DISPLAY'\cf2 \strokec2 ,\cf7 \strokec7 'RICH_MEDIA_DISPLAY_BANNER'\cf2 \strokec2 ,\cf7 \strokec7 'IN-STREAM_VIDEO'\cf2 \strokec2 ,\cf7 \strokec7 'IN-STREAM_VIDEO_REDIRECT'\cf2 \strokec2 ,\cf7 \strokec7 'IN-STREAM_AUDIO'\cf2 \strokec2 ,\cf7 \strokec7 'AUDIO_REDIRECT'\cf2 \strokec2 ,\cf7 \strokec7 'CUSTOM_DISPLAY'\cf2 \strokec2 ,\cf7 \strokec7 'CUSTOM_DISPLAY_INTERSTITIAL'\cf2 \strokec2 ,\cf7 \strokec7 'DISPLAY_REDIRECT'\cf2 \strokec2 ,\cf7 \strokec7 'TRACKING'\cf2 \strokec2 ]).\cf9 \strokec9 build\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'E2:E20'\cf2 \strokec2 ).\cf9 \strokec9 setDataValidation\cf2 \strokec2 (\cf9 \strokec9 dataValidationRuleE\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf3 \strokec3 // Set data validation for cell F2:F20\cf2 \cb1 \strokec2 \
-\cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 dataValidationRuleF\cf2 \strokec2  = \cf6 \strokec6 SpreadsheetApp\cf2 \strokec2 .\cf9 \strokec9 newDataValidation\cf2 \strokec2 ().\cf9 \strokec9 requireValueInList\cf2 \strokec2 ([\cf7 \strokec7 'AUDIO'\cf2 \strokec2 , \cf7 \strokec7 'FLASH'\cf2 \strokec2 , \cf7 \strokec7 'HTML'\cf2 \strokec2 , \cf7 \strokec7 'HTML_IMAGE'\cf2 \strokec2 , \cf7 \strokec7 'IMAGE'\cf2 \strokec2 , \cf7 \strokec7 'VIDEO'\cf2 \strokec2 ]).\cf9 \strokec9 build\cf2 \strokec2 ();\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'F2:F20'\cf2 \strokec2 ).\cf9 \strokec9 setDataValidation\cf2 \strokec2 (\cf9 \strokec9 dataValidationRuleF\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf5 \strokec5 return\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2 ;\cb1 \
-\cb4 \}\cb1 \
-\
-\
-\
-\pard\pardeftab720\partightenfactor0
-\cf8 \cb4 \strokec8 /*******************************************************************************************************************\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * Initialize the LandingPages sheet and its header row\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  * @return \{object\} A handle to the sheet.\cf2 \cb1 \strokec2 \
-\cf8 \cb4 \strokec8  */\cf2 \cb1 \strokec2 \
-\pard\pardeftab720\partightenfactor0
-\cf5 \cb4 \strokec5 function\cf2 \strokec2  \cf9 \strokec9 _setupLandingPagesSheet\cf2 \strokec2 () \{\cb1 \
-\pard\pardeftab720\partightenfactor0
-\cf2 \cb4   \cf5 \strokec5 var\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2  = \cf9 \strokec9 initializeSheet_\cf2 \strokec2 (\cf6 \strokec6 LANDING_PAGES_SHEET\cf2 \strokec2 , \cf5 \strokec5 false\cf2 \strokec2 );\cb1 \
-\
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'A1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 "Advertiser ID*"\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'B1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 "Landing Page Name*"\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'C1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 "Landing Page URL*"\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 USER_INPUT_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 'D1'\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setValue\cf2 \strokec2 (\cf7 \strokec7 "Landing Page ID (Do Not Edit; AUTOPOPULATED)"\cf2 \strokec2 )\cb1 \
-\cb4       .\cf9 \strokec9 setBackground\cf2 \strokec2 (\cf6 \strokec6 AUTO_POP_HEADER_COLOR\cf2 \strokec2 );\cb1 \
-\cb4       \cb1 \
-\cb4   \cf9 \strokec9 sheet\cf2 \strokec2 .\cf9 \strokec9 getRange\cf2 \strokec2 (\cf7 \strokec7 "A1:H1"\cf2 \strokec2 ).\cf9 \strokec9 setFontWeight\cf2 \strokec2 (\cf7 \strokec7 "bold"\cf2 \strokec2 ).\cf9 \strokec9 setWrap\cf2 \strokec2 (\cf5 \strokec5 true\cf2 \strokec2 );\cb1 \
-\cb4   \cf5 \strokec5 return\cf2 \strokec2  \cf9 \strokec9 sheet\cf2 \strokec2 ;\cb1 \
-\
-\cb4   \cb1 \
-\cb4 \}\cb1 \
-\
-\
-\
-\
+
+// Global variables/configurations
+var DCMProfileID = 'DCMProfileID';
+var AUTO_POP_HEADER_COLOR = '#a4c2f4';
+var USER_INPUT_HEADER_COLOR = '#f4d8ba';
+var AUTO_POP_CELL_COLOR = 'lightgray';
+var Atomic_Colour = '#faa61a';
+var Atomic_Colour2 = '#e45f3d';
+var PASTEL_GREEN = '#b6d7a8';
+var LIGHT_PINK = '#ffc0cb';
+
+// Data range values
+var DCMUserProfileID = 'DCMUserProfileID';
+
+// sheet names
+var SETUP_SHEET = 'Setup';
+var SITES_SHEET = 'Sites';
+var CAMPAIGNS_SHEET = 'Campaigns';
+var PLACEMENTS_SHEET = 'Placements';
+var ADS_SHEET = 'Ads';
+var CREATIVES_SHEET = 'Creatives';
+var LANDING_PAGES_SHEET = 'LandingPages';
+
+
+/**
+ * Helper function to get DCM Profile ID.
+ * @return {object} DCM Profile ID.
+ */
+function _fetchProfileId() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var range = ss.getRangeByName(DCMUserProfileID);
+  return range.getValue();
 }
+/*******************************************************************************************************************
+ * Find and clear, or create a new sheet named after the input argument.
+ * @param {string} sheetName The name of the sheet which should be initialized.
+ * @param {boolean} lock To lock the sheet after initialization or not
+ * @return {object} A handle to a sheet.
+ */
+function initializeSheet_(sheetName, lock) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName(sheetName);
+  if (sheet == null) {
+    sheet = ss.insertSheet(sheetName);
+  } else {
+    sheet.clear();
+  }
+  if (lock) {
+    sheet.protect().setWarningOnly(true);
+  }
+  return sheet;
+}
+
+
+/**
+ * Initialize all tabs and their header rows
+ */
+function setupTabs() {
+  _setupSetupSheet();
+  _setupSitesSheet();
+  _setupCampaignsSheet();
+  _setupPlacementsGroupsSheet();
+  _setupAdsSheet();
+  _setupCreativesSheet();
+  _setupLandingPagesSheet();
+}
+
+
+function _setupCampaignsSheet() {
+}
+/**
+ * Initialize the Setup sheet and its header row
+ * @return {object} A handle to the sheet.
+*/
+
+/**
+ * Initialize the Sites sheet and its header row
+ * @return {object} A handle to the sheet.
+ */
+function _setupSitesSheet() {
+  var sheet = initializeSheet_(SITES_SHEET, true);
+
+  sheet.getRange('A1')
+      .setValue('Site Name')
+      .setBackground(AUTO_POP_HEADER_COLOR);
+  sheet.getRange('B1')
+      .setValue('Directory Site ID')
+      .setBackground(AUTO_POP_HEADER_COLOR);
+  sheet.getRange('A1:B1').setFontWeight('bold').setWrap(true);
+  return sheet;
+}
+
+/*******************************************************************************************************************
+ * Initialize the Campaigns sheet and its header row
+ * @return {object} A handle to the sheet.
+ */
+function _setupCampaignsSheet() {
+  var sheet = initializeSheet_(CAMPAIGNS_SHEET, false);
+
+  sheet.getRange('A1')
+      .setValue('DCM Advertiser ID*')
+      .setBackground(PASTEL_GREEN);
+  sheet.getRange('B1')
+      .setValue('Campaign Name*')
+      .setBackground(PASTEL_GREEN);
+  sheet.getRange('C1')
+      .setValue('Landing Page ID*')
+      .setBackground(PASTEL_GREEN);
+  sheet.getRange('D1')
+      .setValue('Start Date*')
+      .setBackground(PASTEL_GREEN);
+  sheet.getRange('E1')
+      .setValue('End Date*')
+      .setBackground(PASTEL_GREEN);
+  sheet.getRange('F1')
+      .setValue('Campaign ID (AUTO-POPULATED)')
+      .setBackground(AUTO_POP_HEADER_COLOR);
+  sheet.getRange('A1:F1')
+      .setFontWeight('bold')
+      .setWrap(true);
+  return sheet;
+
+}
+
+/*******************************************************************************************************************
+ * Initialize the Placements sheet and its header row
+ * @return {object} A handle to the sheet.
+ */
+function _setupPlacementsGroupsSheet() {
+  var sheet = initializeSheet_(PLACEMENTS_SHEET, false);
+
+  sheet.getRange('A1').setValue('Campaign ID*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('B1').setValue('Placement Name*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('C1').setValue('Site ID*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('D1').setValue('Compatibility*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('E1').setValue('Size*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('F1').setValue('Pricing Schedule Start Date*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('G1').setValue('Pricing Schedule End Date*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('H1').setValue('Pricing Schedule Pricing Type*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('I1').setValue('Tag Formats*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('J1').setValue('Placement ID (do not edit; auto-filling)').setBackground(AUTO_POP_HEADER_COLOR);
+
+  sheet.getRange('A1:J1').setFontWeight('bold').setWrap(true);
+
+  // Set data validation for cell D2:D20
+  var dataValidationRuleD = SpreadsheetApp.newDataValidation().requireValueInList(['DISPLAY', 'DISPLAY_INTERSTITIAL', 'IN_STREAM_AUDIO', 'IN_STREAM_VIDEO']).build();
+  sheet.getRange('D2:D20').setDataValidation(dataValidationRuleD);
+
+  // Set data validation for cell H2:H20
+  var dataValidationRuleH = SpreadsheetApp.newDataValidation().requireValueInList(['PRICING_TYPE_CPA', 'PRICING_TYPE_CPC', 'PRICING_TYPE_CPM', 'PRICING_TYPE_CPM_ACTIVEVIEW', 'PRICING_TYPE_FLAT_RATE_CLICKS', 'PRICING_TYPE_FLAT_RATE_IMPRESSIONS']).build();
+  sheet.getRange('H2:H20').setDataValidation(dataValidationRuleH);
+
+  // Set data validation for cell I2:I20
+  var dataValidationRuleI = SpreadsheetApp.newDataValidation().requireValueInList(['PLACEMENT_TAG_Iframe/JavaScript','PLACEMENT_TAG_IFRAME_JAVASCRIPT','PLACEMENT_TAG_INTERNAL_REDIRECT', 'PLACEMENT_TAG_JAVASCRIPT','PLACEMENT_TAG_CLICK_TRACKER','PLACEMENT_TAG_TRACKING','PLACEMENT_TAG_TRACKING_IFRAME','PLACEMENT_TAG_TRACKING_JAVASCRIPT']).build();
+  sheet.getRange('I2:I20').setDataValidation(dataValidationRuleI);
+
+
+  // Set data validation for cell E2:E20
+  var dataValidationRuleE = SpreadsheetApp.newDataValidation().requireValueInList(['728x90', '300x250', '160x600','500x500', '120x600', '336x280', '970x250', '300x600', '300x1050', '320x50', '320x100', '250x250', '200x200', '180x150', '240x400', '300x100', '720x300','970x90', '580x400', '640x360', '640x480', '468x60', '234x60', '88x31', '120x90', '120x60', '125x125', '120x240', '300x50', '320x480', '480x320', '768x1024', '1024x768', '234x15', '320x240', '240x320', '768x90', '980x120', '250x360', '980x250', '930x180', '970x66', '970x280', '980x90', '980x240', '480x300', '480x60', '300x200', '300x300', '320x150', '400x200', '600x300', '600x120', '600x160', '600x200', '600x500', '800x100', '800x400', '800x600', '900x500', '900x600', '900x700', '1000x200', '1000x300', '800x800', '400x800', '1000x627', '1000x750', '1000x800', '1000x90', '1000x250', '1000x260', '1200x170', '1200x630', '1200x675', '1200x800', '1200x900', '1200x1200','1200x627','1X1','1224X1584']).build();
+  sheet.getRange('E2:E20').setDataValidation(dataValidationRuleE);
+  return sheet;
+
+}
+
+
+
+/*******************************************************************************************************************
+ * Initialize the Advertisers sheet and its header row
+ * @return {object} A handle to the sheet.
+ */
+function _setupAdsSheet() {
+  var sheet = initializeSheet_(ADS_SHEET, false);
+
+  sheet.getRange('A1').setValue('Campaign ID*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('B1').setValue('Ad Name*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('C1').setValue('Start Date and Time*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('D1').setValue('End Date and Time*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('E1').setValue('Impression Ratio*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('F1').setValue('Priority*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('G1').setValue('Type*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('H1').setValue('Placement ID*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('I1').setValue('Ad ID (AUTO-POPULATED)').setBackground(AUTO_POP_HEADER_COLOR);
+
+  sheet.getRange('A1:I1').setFontWeight('bold').setWrap(true);
+
+  // Set data validation for cell F2:F20
+  var dataValidationRuleF = SpreadsheetApp.newDataValidation().requireValueInList(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16']).build();
+  sheet.getRange('F2:F20').setDataValidation(dataValidationRuleF);
+  // Set data validation for cell E2:E20
+  var dataValidationRuleE = SpreadsheetApp.newDataValidation().requireValueInList(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']).build();
+  sheet.getRange('E2:E20').setDataValidation(dataValidationRuleE);
+
+  return sheet;
+}
+
+
+
+/*******************************************************************************************************************
+ * Initialize the Creatives sheet and its header row
+ * @return {object} A handle to the sheet.
+ */
+function _setupCreativesSheet() {
+  var sheet = initializeSheet_(CREATIVES_SHEET, false);
+
+  sheet.getRange('A1').setValue('Advertiser ID*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('B1').setValue('Creative Name*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('C1').setValue('Width*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('D1').setValue('Height*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('E1').setValue('Creative Type*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('F1').setValue('Creative Asset Type*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('G1').setValue('Creative Asset Name*').setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('H1').setValue('Creative ID (AUTO-POPULATED)').setBackground(AUTO_POP_HEADER_COLOR);
+
+  sheet.getRange('A1:H1').setFontWeight('bold').setWrap(true);
+
+  // Set data validation for cell E2:E20
+  var dataValidationRuleE = SpreadsheetApp.newDataValidation().requireValueInList(['DISPLAY','RICH_MEDIA_DISPLAY_BANNER','IN-STREAM_VIDEO','IN-STREAM_VIDEO_REDIRECT','IN-STREAM_AUDIO','AUDIO_REDIRECT','CUSTOM_DISPLAY','CUSTOM_DISPLAY_INTERSTITIAL','DISPLAY_REDIRECT','TRACKING']).build();
+  sheet.getRange('E2:E20').setDataValidation(dataValidationRuleE);
+
+  // Set data validation for cell F2:F20
+  var dataValidationRuleF = SpreadsheetApp.newDataValidation().requireValueInList(['AUDIO', 'FLASH', 'HTML', 'HTML_IMAGE', 'IMAGE', 'VIDEO']).build();
+  sheet.getRange('F2:F20').setDataValidation(dataValidationRuleF);
+
+  return sheet;
+}
+
+
+
+/*******************************************************************************************************************
+ * Initialize the LandingPages sheet and its header row
+ * @return {object} A handle to the sheet.
+ */
+function _setupLandingPagesSheet() {
+  var sheet = initializeSheet_(LANDING_PAGES_SHEET, false);
+
+  sheet.getRange('A1')
+      .setValue("Advertiser ID*")
+      .setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('B1')
+      .setValue("Landing Page Name*")
+      .setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('C1')
+      .setValue("Landing Page URL*")
+      .setBackground(USER_INPUT_HEADER_COLOR);
+  sheet.getRange('D1')
+      .setValue("Landing Page ID (Do Not Edit; AUTOPOPULATED)")
+      .setBackground(AUTO_POP_HEADER_COLOR);
+      
+  sheet.getRange("A1:H1").setFontWeight("bold").setWrap(true);
+  return sheet;
+
+  
+}
+
+
+
