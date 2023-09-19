@@ -8,7 +8,7 @@ function main() {
 }
 
 function sendEmailAlert(todayCost, yesterdayCost) {
-  var recipient = 'j.tang@atomic212.com.au'; // Replace with your email
+  var recipient = '*********'; // Replace with your email/s
   var subject = 'SPEND ALERT | Salesforce | Google - Singapore';
   
   // Format the cost values to be in a dollar format
