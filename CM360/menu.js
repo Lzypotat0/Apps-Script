@@ -5,6 +5,8 @@ function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu('DCM Functions')
       .addItem('Setup Sheets', 'setupTabs')
+      .addItem('Update token',   
+                                   'updateAuthToken')
       .addSeparator()
       .addItem('Fetch User Profile ID', 'listUserProfiles')
       .addItem('Fetch Active Campaigns', 'listActiveCampaigns')
@@ -16,5 +18,19 @@ function onOpen() {
       .addItem('Bulk Create Ads', 'createAds')
       .addItem('Bulk Create Creatives', 'createCreatives')
       .addItem('Bulk Create Landing Pages', 'createLandingPages')
-      .addToUi();
+      .addToUi()
+
+}
+
+
+function updateAuthToken() {
+    var ui = SpreadsheetApp.getUi();
+    var tokenInput = ui.prompt("Please enter the auth token");
+    var tokenValue = tokenInput.getResponseText();
+    if (isEmpty(tokenValue)) {
+        ui.alert("Token cannot be empty");
+        return;
+    }
+    PropertiesService.getScriptProperties().setProperty(AUTH_TOKEN, 
+         tokenValue);
 }
